@@ -1,5 +1,5 @@
 FROM nginx:1.17.8-alpine
 
-COPY default.conf /tmp/default.conf
+COPY default.conf /etc/nginx/conf.d/default.conf.tmpl
 
-CMD envsubst < /tmp/default.conf > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'
+CMD envsubst < /etc/nginx/conf.d/default.conf.tmpl > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'
